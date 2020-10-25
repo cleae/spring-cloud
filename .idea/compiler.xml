@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ec-commerce-eureka-service" />
+        <module name="ec-commerce-commodity-service" />
+        <module name="ec-commerce-order-service" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ec-commerce-commodity-service" target="1.8" />
+      <module name="ec-commerce-eureka-service" target="1.8" />
+      <module name="ec-commerce-order-service" target="1.8" />
+      <module name="spring-cloud" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ec-commerce-commodity-service" options="-parameters" />
+      <module name="ec-commerce-eureka-service" options="-parameters" />
+      <module name="ec-commerce-order-service" options="-parameters" />
+      <module name="spring-cloud" options="-parameters" />
+    </option>
+  </component>
+</project>
