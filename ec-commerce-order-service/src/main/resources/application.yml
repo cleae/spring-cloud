@@ -11,15 +11,23 @@ eureka:
 spring:
     application:
         name: order-service
+    redis:
+        host: 192.168.64.129  #测试
+        #    host: 172.16.215.49  #生产
+        timeout: 2000
+        port: 6379
+        password: 1313008hardtl
 
 ec-commerce-commodity-service:
     ribbon:
         NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
 feign:
+    hystrix:
+        enabled: true
     client:
         config:
             default:
                 connectTimeout: 2000
-                readTimeout: 3000
+                readTimeout: 2000
 
