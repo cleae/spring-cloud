@@ -12,11 +12,13 @@ spring:
     application:
         name: order-service
     redis:
-        host: 192.168.64.129  #测试
+#        host: 192.168.64.129  #测试
+        host: 120.79.18.7
         #    host: 172.16.215.49  #生产
         timeout: 2000
-        port: 6379
-        password: 1313008hardtl
+        port: 16379
+        password: chenrenshui
+#        password: 1313008hardtl
 
 ec-commerce-commodity-service:
     ribbon:

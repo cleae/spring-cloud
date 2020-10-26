@@ -6,7 +6,7 @@
         <artifactId>spring-cloud</artifactId>
         <groupId>com.tl.parent</groupId>
         <version>0.0.1-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.tl</groupId>
     <artifactId>ec-commerce-eureka-service</artifactId>
@@ -20,13 +20,10 @@
     </properties>
 
     <dependencies>
-
-
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
@@ -39,7 +36,6 @@
             </exclusions>
         </dependency>
     </dependencies>
-
     <dependencyManagement>
         <dependencies>
             <dependency>
@@ -51,7 +47,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
     <build>
         <plugins>
             <plugin>
@@ -60,5 +55,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
