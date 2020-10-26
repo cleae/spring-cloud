@@ -33,6 +33,15 @@ feign:
                 connectTimeout: 2000
                 readTimeout: 3000
 
+#hystrix 熔断超时时间
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 4000
+
 logging:
     level:
         org.springframework.web: TRACE
