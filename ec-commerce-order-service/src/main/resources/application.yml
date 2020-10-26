@@ -13,11 +13,10 @@ spring:
         name: order-service
     redis:
 #        host: 192.168.64.129  #测试
-        host: 120.79.18.7
+        host: 127.0.0.1
         #    host: 172.16.215.49  #生产
         timeout: 2000
-        port: 16379
-        password: chenrenshui
+        port: 6379
         database: 0
 #        password: 1313008hardtl
 
@@ -34,3 +33,6 @@ feign:
                 connectTimeout: 2000
                 readTimeout: 3000
 
+logging:
+    level:
+        org.springframework.web: TRACE
