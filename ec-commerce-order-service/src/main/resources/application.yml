@@ -18,6 +18,7 @@ spring:
         timeout: 2000
         port: 16379
         password: chenrenshui
+        database: 0
 #        password: 1313008hardtl
 
 ec-commerce-commodity-service:
@@ -31,5 +32,5 @@ feign:
         config:
             default:
                 connectTimeout: 2000
-                readTimeout: 2000
+                readTimeout: 3000
 

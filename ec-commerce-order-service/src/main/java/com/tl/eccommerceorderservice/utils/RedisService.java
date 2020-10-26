@@ -31,7 +31,7 @@ public class RedisService {
     public Boolean setNX(String key,Object value){
         ValueOperations<String, Object> opsForValue = redisTemplate.opsForValue();
 
-        return opsForValue.setIfAbsent(key,value,20,TimeUnit.SECONDS);
+        return opsForValue.setIfAbsent(key,value,2,TimeUnit.MINUTES);
     }
 
 

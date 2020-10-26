@@ -15,7 +15,7 @@ import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @RestController
-@RequestMapping("api/v1/order")
+@RequestMapping("/api/v1/order")
 public class OrderController {
 
 
@@ -33,9 +33,9 @@ public class OrderController {
      */
     private static final String COMMODITY_ERR="ec-commodity-advice";
 
-    @RequestMapping("save")
+    @RequestMapping("/save2")
     @HystrixCommand(fallbackMethod = "saveOrderFail")
-    public Object save(@RequestParam("user_id")int userId, @RequestParam("product_id") int productId){
+    public Resp save(@RequestParam("user_id")int userId, @RequestParam("product_id") int productId){
         return Resp.ok(productClient.save(userId, productId)).code(200).msg("抢购成功");
     }
 
@@ -48,33 +48,35 @@ public class OrderController {
         /**
          * 模拟调用远程接口出现问题，短信通知相应得负责人员
          */
+        System.out.println("key=====>"+redisService.get(COMMODITY_ERR));
         Boolean exist = redisService.setNX(COMMODITY_ERR, 1);
         if(exist){
-            System.out.println("已发送报警短信。。。");
-        }
-        //异步发送短信
-        int corePoolSize = 2;
-        int maxPoolSize = 6;
-        long keepAliveTime = 10;
-        TimeUnit unit = TimeUnit.SECONDS;
-        BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(10);
-        ThreadFactory threadFactory = new NameTreadFactory();
-        RejectedExecutionHandler handler = new MyIgnorePolicy();
-        ThreadPoolExecutor executor = null;
-        try {
-            executor = new ThreadPoolExecutor(corePoolSize,
-                    maxPoolSize, keepAliveTime, unit,
-                    workQueue, threadFactory, handler);
-            /* 预启动所有核心线程  提升效率 */
-            executor.prestartAllCoreThreads();
+            System.out.println("已发送报警短信。。。"+exist);
+        }else {
+            //异步发送短信
+            int corePoolSize = 2;
+            int maxPoolSize = 6;
+            long keepAliveTime = 10;
+            TimeUnit unit = TimeUnit.SECONDS;
+            BlockingQueue<Runnable> workQueue = new ArrayBlockingQueue<>(10);
+            ThreadFactory threadFactory = new NameTreadFactory();
+            RejectedExecutionHandler handler = new MyIgnorePolicy();
+            ThreadPoolExecutor executor = null;
+            try {
+                executor = new ThreadPoolExecutor(corePoolSize,
+                        maxPoolSize, keepAliveTime, unit,
+                        workQueue, threadFactory, handler);
+                /* 预启动所有核心线程  提升效率 */
+                executor.prestartAllCoreThreads();
                 RunnableTask task = new RunnableTask("192.168.1.66 主机发送短信线程");
                 executor.submit(task);
-            System.out.println("发送短信任务提交完毕。。");
-        } finally {
-            assert executor != null;
-            executor.shutdown();
+                System.out.println("发送短信任务提交完毕le。。");
+            } finally {
+                assert executor != null;
+                executor.shutdown();
+            }
         }
-        return Resp.fail().code(-1).msg("活动太火爆了，请稍等再来");
+        return Resp.fail().code(-1).msg("活动实在是太火爆了，请稍等再来");
     }
 
 
