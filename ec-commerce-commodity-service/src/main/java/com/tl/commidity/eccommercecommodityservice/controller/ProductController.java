@@ -42,11 +42,11 @@ public class ProductController {
     public Object findById(int id){
 
         //模拟被调用客户端的耗时操作
-//        try {
-//            TimeUnit.SECONDS.sleep(2L);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            TimeUnit.SECONDS.sleep(2L);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         Product product = productService.findById(id);
 

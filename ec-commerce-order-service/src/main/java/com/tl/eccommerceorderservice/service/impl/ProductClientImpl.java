@@ -22,6 +22,9 @@ public class ProductClientImpl {
 
 
     public ProductOrder save(int userId, int productId) {
+        System.out.println("userId:" + userId);
+        if(userId==1)
+            return null;//模拟当userId==1的时候正常返回
 
         /**
          * 通过FeignClient 调用远程接口

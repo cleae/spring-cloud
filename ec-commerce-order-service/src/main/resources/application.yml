@@ -13,17 +13,17 @@ spring:
         name: order-service
     redis:
 #        host: 192.168.64.129  #测试
-        host: 127.0.0.1
-        #    host: 172.16.215.49  #生产
+        host: lintan123.cn  #生产
         timeout: 2000
         port: 6379
         database: 0
-#        password: 1313008hardtl
+        password: 1313008hardtl
 
 ec-commerce-commodity-service:
     ribbon:
         NFLoadBalancerRuleClassName: com.netflix.loadbalancer.RandomRule
 
+#设置feign 调用超时时间
 feign:
     hystrix:
         enabled: true
@@ -33,7 +33,9 @@ feign:
                 connectTimeout: 2000
                 readTimeout: 3000
 
-#hystrix 熔断超时时间
+#hystrix 熔断超时时间 （设置完feign 超时时间之后，由于在引进hystrix 超时机制，所以要设置熔断超时时间）
+#hystrix 隔离策略有两种
+#           线程池、信号量。默认是线程池策略，当某个服务节点的接口线程使用量超过一定的限度之后，后续再有请求就不在处理
 hystrix:
     command:
         default:
@@ -42,6 +44,12 @@ hystrix:
                     thread:
                         timeoutInMilliseconds: 4000
 
+#配置文件增加 endpoint
+management:
+    endpoints:
+        web:
+            exposure:
+                include: "*"
 logging:
     level:
         org.springframework.web: TRACE
