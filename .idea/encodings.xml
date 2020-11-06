@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding" defaultCharsetForPropertiesFiles="GBK">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/ec-commerce-api-gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ec-commerce-commodity-service" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ec-commerce-commodity-service/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/ec-commerce-commodity-service/src/main/resources/application.yml" charset="GBK" />

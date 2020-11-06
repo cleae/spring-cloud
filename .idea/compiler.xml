@@ -7,11 +7,13 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="ec-commerce-eureka-service" />
+        <module name="ec-commerce-api-gateway" />
         <module name="ec-commerce-commodity-service" />
         <module name="ec-commerce-order-service" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="ec-commerce-api-gateway" target="1.8" />
       <module name="ec-commerce-commodity-service" target="1.8" />
       <module name="ec-commerce-eureka-service" target="1.8" />
       <module name="ec-commerce-order-service" target="1.8" />
@@ -20,6 +22,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="ec-commerce-api-gateway" options="-parameters" />
       <module name="ec-commerce-commodity-service" options="-parameters" />
       <module name="ec-commerce-eureka-service" options="-parameters" />
       <module name="ec-commerce-order-service" options="-parameters" />
