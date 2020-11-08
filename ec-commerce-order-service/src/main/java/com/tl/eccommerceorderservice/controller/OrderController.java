@@ -33,10 +33,10 @@ public class OrderController {
      */
     private static final String COMMODITY_ERR="ec-commodity-advice";
 
-    @RequestMapping("/save2")
+    @RequestMapping("/save")
     @HystrixCommand(fallbackMethod = "saveOrderFail")
     public Resp save(@RequestParam("user_id")int userId, @RequestParam("product_id") int productId){
-        return Resp.ok(productClient.save(userId, productId)).code(200).msg("抢购成功");
+        return Resp.ok(productClient.save(userId, productId)).code(200).msg("抢购成功..");//Response body was not logged
     }
 
 
@@ -50,7 +50,7 @@ public class OrderController {
          */
         System.out.println("key=====>"+redisService.get(COMMODITY_ERR));
         Boolean exist = redisService.setNX(COMMODITY_ERR, 1);
-        if(exist){
+        if(!exist){
             System.out.println("已发送报警短信。。。"+exist);
         }else {
             //异步发送短信

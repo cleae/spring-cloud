@@ -1,7 +1,7 @@
 server:
     port: 10010
 
-
+#注册中心地址
 eureka:
     client:
         serviceUrl:
@@ -10,10 +10,10 @@ eureka:
 
 spring:
     application:
-        name: order-service
+        name: ec-commerce-order-service
     redis:
-#        host: 192.168.64.129  #测试
-        host: lintan123.cn  #生产
+        host: 192.168.64.129  #测试
+#        host: lintan123.cn  #生产
         timeout: 2000
         port: 6379
         database: 0
@@ -42,14 +42,18 @@ hystrix:
             execution:
                 isolation:
                     thread:
-                        timeoutInMilliseconds: 4000
+                        timeoutInMilliseconds: 1000
 
-#配置文件增加 endpoint
+    dashboard:
+        proxy-stream-allow-list: "localhost"
+
+logging:
+    level:
+        org.springframework.web: TRACE
+
+#配置文件增加 endpoint 暴露全部的监控信息
 management:
     endpoints:
         web:
             exposure:
                 include: "*"
-logging:
-    level:
-        org.springframework.web: TRACE
