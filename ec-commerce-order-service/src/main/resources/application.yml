@@ -12,8 +12,8 @@ spring:
     application:
         name: ec-commerce-order-service
     redis:
-        host: 192.168.64.129  #测试
-#        host: lintan123.cn  #生产
+#        host: 192.168.64.129  #测试
+        host: lintan123.cn  #生产
         timeout: 2000
         port: 6379
         database: 0

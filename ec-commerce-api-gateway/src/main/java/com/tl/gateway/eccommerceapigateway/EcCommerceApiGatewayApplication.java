@@ -9,8 +9,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 public class EcCommerceApiGatewayApplication {
 
 	public static void main(String[] args) {
-		System.out.println("网关启动中。。。。");
-		SpringApplication.run(EcCommerceApiGatewayApplication.class, args);
+		SpringApplication.run(EcCommerceApiGatewayApplication.class, args);//invalidate
 	}
 
 }
+

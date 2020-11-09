@@ -51,7 +51,7 @@ public class OrderController {
         System.out.println("key=====>"+redisService.get(COMMODITY_ERR));
         Boolean exist = redisService.setNX(COMMODITY_ERR, 1);
         if(!exist){
-            System.out.println("已发送报警短信。。。"+exist);
+            System.out.println("已发送报警短信。。。1"+exist);
         }else {
             //异步发送短信
             int corePoolSize = 2;

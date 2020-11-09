@@ -1,13 +1,10 @@
 server:
   port: 9002
 
-
 #服务的名称
 spring:
   application:
     name: ec-commerce-api-gateway
-
-
 
 #指定注册中心地址
 eureka:
@@ -23,8 +20,11 @@ zuul:
     ec-commerce-order-service: /apigateway/order/**
     ec-commerce-commodity-service: /apigateway/product/**
   #统一入口为上面的配置，其他入口忽略
-#  ignored-patterns: /*-service/**
+  #ignored-patterns: /*-service/**
   #忽略整个服务，对外提供接口
   #ignored-services: product-service
+
+  #过滤敏感请求头，默认会过滤cookie set-cookie Authorization
+  sensitive-headers:
 
 
