@@ -9,7 +9,7 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 public class EcCommerceApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(EcCommerceApiGatewayApplication.class, args);//invalidate
+		SpringApplication.run(EcCommerceApiGatewayApplication.class, args);//invalidate234
 	}
 
 }
